@@ -1,5 +1,5 @@
 def test_function():
-    main_var = "I'm a variable in MAIN function"
+    main_var = "I'm a variable in MAIN function" # внутренняя одноименная переменная первого уровня вложенности
     print('MAIN function reports main_var:', main_var)
 
     # print('Main function reports inner_msg:', inner_msg) # Ошибка области видимости еще не этапе проверки синтаксиса
@@ -13,7 +13,7 @@ def test_function():
         print(f'INNER function reports main_var: {main_var}')
 
     def inner_function_2():
-        main_var = "I'm a variable in INNER#2 function!"  # внутренняя одноименная переменная
+        main_var = "I'm a variable in INNER#2 function!"  # внутренняя одноименная переменная второго уровня
         print(f'INNER#2 function reports main_var (internal!): {main_var}')
 
     print("Running inner function:")
