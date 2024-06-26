@@ -17,7 +17,10 @@ class Building:
 # функция сравнения 2-х объектов и форматированного вывода результата в консоль
 def b_comparation(first, second):
     c_res = first == second
-    print(f'Строение \033[34m{first.name}\033[0m эквивалентно \033[34m{second.name}\033[0m: \033{"[32m" if c_res else "[31m"}{c_res}\033[0m')
+    equal_str = f'\033[32m эквивалентно \033[0m'
+    not_equal_str = f'\033[31m не эквивалентно \033[0m'
+    print(f'Строение \033[34m{first.name}\033[0m {equal_str if c_res else not_equal_str} \033[34m{second.name}\033[0m:')
+    # print(f'Строение \033[34m{first.name}\033[0m эквивалентно \033[34m{second.name}\033[0m: \033{"[32m" if c_res else "[31m"}{c_res}\033[0m')
 
 
 h1 = Building('ЖК "Парус", д1')
@@ -36,6 +39,11 @@ h4 = Building('ЖК "Парус", д4')
 h4.numberOfFloors = 4
 h4.buildingType = "торговый центр"
 
+h5 = Building('ЖК "Южный", д20')
+h5.numberOfFloors = 4
+h5.buildingType = "торговый центр"
+
 b_comparation(h1, h2)
 b_comparation(h3, h4)
 b_comparation(h2, h3)
+b_comparation(h4, h5)
