@@ -10,6 +10,8 @@
 # "<название> снесён, но он останется в истории"
 # Создайте несколько объектов класса House и проверьте работу методов __del__ и __new__,
 # а также значение атрибута houses_history.
+import sys
+
 
 class Building:
     _reg = []  # список указателей. использую для обхода экземпляров класса в цикле
@@ -46,10 +48,11 @@ class Building:
         # подсказки pycharm  не работают в данном случае...
         # "community", 'house_number', 'building_number', 'storeys', 'function'
         record = (f'{self.community}, дом №{self.house_number}'
-                  f'{f", строение {self.building_number}." if hasattr(self, 'building_number') else "."}'
+                  f'{f", строение {self.building_number}." if hasattr(self, "building_number") else "."}'
                   f' Снесен. Но навсегда останется в нашей памяти!')
         print(record)
         Building.houses_history.append(record)
+        # print(sys.stderr)
 
     def _pre_del(self):
         Building._reg.remove(self)  # удаляем ссылку в списке указателей
