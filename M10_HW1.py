@@ -26,28 +26,29 @@ from time import sleep
 from datetime import datetime
 from threading import Thread
 
+
 def write_words(word, word_count, file_name):
     with open(file_name, 'w', encoding='UTF-8') as file:
-        for i in range(1, word_count+1):
+        for i in range(1, word_count + 1):
             file.write(f'{word} №{i}\n')
             sleep(0.1)
         print(f'Завершилась запись в файл {file_name}')
 
+
 print('Запись последовательным вызовом функций:')
 func_time_start = datetime.now()
-write_words('Какое-то слово',10, 'example1.txt')
-write_words('Какое-то слово',30, 'example2.txt')
-write_words('Какое-то слово',200, 'example3.txt')
-write_words('Какое-то слово',100, 'example4.txt')
+write_words('Какое-то слово', 10, 'example1.txt')
+write_words('Какое-то слово', 30, 'example2.txt')
+write_words('Какое-то слово', 200, 'example3.txt')
+write_words('Какое-то слово', 100, 'example4.txt')
 func_time_end = datetime.now()
-print(f'На выполнение последовательного вызова функций затрачено: {func_time_end-func_time_start}')
-
+print(f'На выполнение последовательного вызова функций затрачено: {func_time_end - func_time_start}')
 
 print('\nЗапись в потоках:')
-thread_first = Thread(target=write_words, args=('Какое-то слово',10,'example1.txt'))
-thread_second = Thread(target=write_words, args=('Какое-то слово',30,'example2.txt'))
-thread_third = Thread(target=write_words, args=('Какое-то слово',200,'example3.txt'))
-thread_fourth = Thread(target=write_words, args=('Какое-то слово',100,'example4.txt'))
+thread_first = Thread(target=write_words, args=('Какое-то слово', 10, 'example1.txt'))
+thread_second = Thread(target=write_words, args=('Какое-то слово', 30, 'example2.txt'))
+thread_third = Thread(target=write_words, args=('Какое-то слово', 200, 'example3.txt'))
+thread_fourth = Thread(target=write_words, args=('Какое-то слово', 100, 'example4.txt'))
 
 threads_time_start = datetime.now()
 
@@ -62,5 +63,4 @@ thread_third.join()
 thread_fourth.join()
 
 threads_time_end = datetime.now()
-print(f'На выполнение функций в потоках затрачено: {threads_time_end-threads_time_start}')
-
+print(f'На выполнение функций в потоках затрачено: {threads_time_end - threads_time_start}')
